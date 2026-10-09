@@ -1,26 +1,34 @@
 import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import {
-    Image,
-    SafeAreaView,
-    ScrollView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  Image,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
 
 export default function LoginScreen() {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
     setIsLoading(true);
+    // Simulasi loading
     setTimeout(() => {
       setIsLoading(false);
+      // 3. Pindah ke halaman dashboard setelah sukses login
+      router.replace('/dashboard'); 
     }, 1200);
   };
+
+  // ... (Sisa kode return <SafeAreaView> tetap sama persis seperti sebelumnya)
 
   return (
     <SafeAreaView className="flex-1 bg-surface">
@@ -151,7 +159,8 @@ export default function LoginScreen() {
         </View>
 
         <TouchableOpacity className="w-full h-12 px-4 rounded-xl bg-surface-container-lowest shadow-sm flex-row items-center justify-center mb-3">
-          <MaterialIcons name="g-translate" size={20} color="#EA4335" /> {/* Gunakan icon SVG Google sesungguhnya jika ada react-native-svg */}
+          {/* Gunakan icon SVG Google sesungguhnya jika ada react-native-svg */}
+          <MaterialIcons name="g-translate" size={20} color="#EA4335" />
           <Text className="text-on-surface font-semibold ml-3">Lanjutkan dengan Google</Text>
         </TouchableOpacity>
 
