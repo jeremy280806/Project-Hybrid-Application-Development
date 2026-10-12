@@ -1,14 +1,391 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   ScrollView,
   Text,
   TouchableOpacity,
   View,
-  SafeAreaView,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
+
+type MaterialIconName = React.ComponentProps<typeof MaterialIcons>['name'];
+
+function AppHeader() {
+  return (
+    <View className="h-16 px-4 flex-row items-center justify-between bg-surface/85 border-b border-surface-container-high">
+      <View className="flex-col">
+        <Text className="font-extrabold text-lg text-primary tracking-tight leading-tight">
+          ServiConnect
+        </Text>
+        <Text className="font-medium text-xs text-on-surface-variant">Beranda</Text>
+      </View>
+      <View className="flex-row items-center gap-x-1">
+        <TouchableOpacity className="w-11 h-11 items-center justify-center">
+          <MaterialIcons name="search" size={24} color="#131b2e" />
+        </TouchableOpacity>
+        <TouchableOpacity className="w-11 h-11 items-center justify-center relative">
+          <MaterialIcons name="notifications" size={24} color="#131b2e" />
+          <View className="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error" />
+        </TouchableOpacity>
+        <View className="w-11 h-11 items-center justify-center">
+          <Image
+            source={{
+              uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFPHg2dPEoST1H7o5t_um0rM7dPKycfPprxxw-uiNxGi2DGiMsFvrlbbfscpwbValeIm0Tjd0a8_NEi-Id5i0WlJ5sq3izUel8OVeo-Q5E1hgSwqQl_[REDACTED: credential]-ZtcYgIQD_W-PskDBJkZzMA_0WMbslCAdhLGpbC-Kp0LPKEG5XOrnqi8VcIDrMsn_',
+            }}
+            className="w-8 h-8 rounded-full"
+          />
+        </View>
+      </View>
+    </View>
+  );
+}
+
+function GreetingSection() {
+  const [isAvailable, setIsAvailable] = useState(true);
+
+  return (
+    <View className="flex-row items-center justify-between pt-1">
+      <View className="flex-col">
+        <View className="flex-row items-center gap-x-1">
+          <Text className="font-bold text-2xl text-on-surface">Halo, Reza</Text>
+          <Text className="text-2xl">👋</Text>
+        </View>
+        <Text className="text-xs text-on-surface-variant mt-0.5">
+          Siap menerima tawaran proyek hari ini?
+        </Text>
+      </View>
+
+      <TouchableOpacity
+        onPress={() => setIsAvailable(!isAvailable)}
+        className={`flex-row items-center gap-x-1.5 px-3 py-1.5 rounded-full shadow-sm ${
+          isAvailable
+            ? 'bg-tertiary-fixed'
+            : 'bg-surface-container-high'
+        }`}
+      >
+        <View
+          className={`w-2 h-2 rounded-full ${
+            isAvailable ? 'bg-tertiary' : 'bg-outline'
+          }`}
+        />
+        <Text
+          className={`text-[11px] font-bold tracking-wide uppercase ${
+            isAvailable ? 'text-on-tertiary-fixed' : 'text-on-surface-variant'
+          }`}
+        >
+          {isAvailable ? 'Terima Pesanan' : 'Istirahat / Sibuk'}
+        </Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function BalanceCard() {
+  const quickActions: { icon: MaterialIconName; label: string; badge?: string }[] = [
+    { icon: 'payments', label: 'Tarik Dana' },
+    { icon: 'add-circle-outline', label: 'Buat Jasa' },
+    { icon: 'pending-actions', label: 'Pesanan', badge: '4' },
+    { icon: 'work-outline', label: 'Cari Proyek' },
+  ];
+
+  return (
+    <View className="rounded-xl bg-primary p-4 shadow-md overflow-hidden">
+      <View className="flex-row items-start justify-between mb-1">
+        <View>
+          <View className="flex-row items-center gap-x-1.5 opacity-85">
+            <MaterialIcons name="account-balance-wallet" size={16} color="#ffffff" />
+            <Text className="text-xs text-white">Saldo Siap Ditarik</Text>
+          </View>
+          <Text className="text-3xl font-extrabold text-white tracking-tight mt-1">
+            Rp 4.850.000
+          </Text>
+        </View>
+        <TouchableOpacity className="flex-row items-center gap-x-1 px-3 py-1.5 rounded-lg bg-white/20">
+          <MaterialIcons name="history" size={16} color="#ffffff" />
+          <Text className="text-xs text-white font-medium">Riwayat</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View className="flex-row justify-between mt-5 pt-3.5 border-t border-white/20">
+        {quickActions.map((action) => (
+          <TouchableOpacity key={action.label} className="flex-1 items-center gap-y-1.5">
+            <View className="w-11 h-11 rounded-full bg-white/15 items-center justify-center relative">
+              <MaterialIcons name={action.icon} size={20} color="#ffffff" />
+              {action.badge && (
+                <View className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-secondary-container items-center justify-center">
+                  <Text className="text-[10px] font-bold text-on-secondary-container leading-none">
+                    {action.badge}
+                  </Text>
+                </View>
+              )}
+            </View>
+            <Text className="text-[11px] text-white text-center leading-tight">{action.label}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+function StatsStrip() {
+  return (
+    <View className="flex-row gap-x-2 bg-surface-container-low p-2 rounded-xl">
+      <View className="flex-1 items-center py-2 px-1 rounded-lg bg-surface-container-lowest shadow-sm">
+        <Text className="text-xl font-extrabold text-primary">4</Text>
+        <Text className="text-[11px] text-on-surface-variant font-medium mt-0.5 text-center">
+          Proyek Aktif
+        </Text>
+      </View>
+      <View className="flex-1 items-center py-2 px-1 rounded-lg bg-surface-container-lowest shadow-sm">
+        <View className="flex-row items-center gap-x-0.5">
+          <Text className="text-xl font-extrabold text-on-surface">4.9</Text>
+          <MaterialIcons name="star" size={18} color="#F59E0B" />
+        </View>
+        <Text className="text-[11px] text-on-surface-variant font-medium mt-0.5 text-center">
+          96 Ulasan
+        </Text>
+      </View>
+      <View className="flex-1 items-center py-2 px-1 rounded-lg bg-surface-container-lowest shadow-sm">
+        <Text className="text-base font-bold text-secondary" numberOfLines={1}>
+          Rp 12.3jt
+        </Text>
+        <Text className="text-[11px] text-on-surface-variant font-medium mt-0.5 text-center">
+          Bulan Ini
+        </Text>
+      </View>
+    </View>
+  );
+}
+
+function UrgentOrderSpotlight() {
+  return (
+    <View className="flex-col gap-y-2.5">
+      <View className="flex-row items-center justify-between">
+        <View className="flex-row items-center gap-x-1.5">
+          <MaterialIcons name="priority-high" size={20} color="#3525cd" />
+          <Text className="text-base font-bold text-on-surface">Pesanan Mendesak</Text>
+        </View>
+        <TouchableOpacity className="flex-row items-center">
+          <Text className="text-xs font-semibold text-primary">Lihat Semua (4)</Text>
+          <MaterialIcons name="chevron-right" size={16} color="#3525cd" />
+        </TouchableOpacity>
+      </View>
+
+      <View className="bg-surface-container-lowest rounded-xl p-4 shadow-sm gap-y-3">
+        <View className="flex-row items-start justify-between gap-x-2">
+          <View className="flex-row items-center gap-x-2.5 flex-1 min-w-0">
+            <Image
+              source={{
+                uri: 'https://lh3.googleusercontent.com/aida-[REDACTED: credential]_YDDP4Rqr2Mq-[REDACTED: credential]_DGjiaKcmTbiABLWBVp1H_XyT7koQHOzTO_ptegVRX6_BNS0Ef7YzXq',
+              }}
+              className="w-10 h-10 rounded-full shrink-0"
+            />
+            <View className="flex-col min-w-0">
+              <Text className="text-sm font-semibold text-on-surface" numberOfLines={1}>
+                Budi Santoso
+              </Text>
+              <Text className="text-xs text-on-surface-variant">Order #SC-8921</Text>
+            </View>
+          </View>
+          <View className="flex-row items-center gap-x-1 px-2.5 py-1 rounded-full bg-error-container shrink-0">
+            <MaterialIcons name="timer" size={14} color="#BA1A1A" />
+            <Text className="text-[11px] font-bold text-error">1 Hari 6 Jam</Text>
+          </View>
+        </View>
+
+        <View className="flex-col gap-y-1.5 bg-surface-container-low p-2.5 rounded-lg">
+          <View className="flex-row items-center justify-between">
+            <Text className="text-xs font-semibold text-on-surface">Desain UI/UX Mobile App</Text>
+            <Text className="text-xs font-bold text-primary">Milestone 2/3</Text>
+          </View>
+          <View className="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+            <View className="h-full rounded-full bg-primary" style={{ width: '66%' }} />
+          </View>
+          <View className="flex-row items-center justify-between">
+            <Text className="text-[10px] text-on-surface-variant">Revisi wireframe final</Text>
+            <Text className="text-[10px] text-on-surface-variant">66% rampung</Text>
+          </View>
+        </View>
+
+        <View className="flex-row gap-x-2 pt-1">
+          <TouchableOpacity className="flex-1 py-2 rounded-lg bg-surface-container items-center justify-center">
+            <Text className="text-sm font-semibold text-on-surface">Detail Pesanan</Text>
+          </TouchableOpacity>
+          <TouchableOpacity className="flex-row items-center justify-center gap-x-1.5 px-4 py-2 rounded-lg bg-primary-container shadow-sm">
+            <MaterialIcons name="chat" size={18} color="#ffffff" />
+            <Text className="text-sm font-bold text-on-primary">Chat Klien</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+function CommunityFeed() {
+  const filters = ['Semua', 'Permintaan Klien', 'Showcase Portofolio', 'Teknisi & IT'];
+  const [activeFilter, setActiveFilter] = useState(0);
+
+  return (
+    <View className="flex-col gap-y-3">
+      <View className="flex-row items-center justify-between">
+        <View className="flex-row items-center gap-x-1.5">
+          <MaterialIcons name="dynamic-feed" size={20} color="#00687a" />
+          <Text className="text-base font-bold text-on-surface">Eksplor Komunitas & Jasa</Text>
+        </View>
+        <Text className="text-xs text-on-surface-variant">Real-time</Text>
+      </View>
+
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ gap: 8, paddingBottom: 4 }}
+      >
+        {filters.map((filter, i) => (
+          <TouchableOpacity
+            key={filter}
+            onPress={() => setActiveFilter(i)}
+            className={`px-3.5 py-1.5 rounded-full shrink-0 ${
+              activeFilter === i ? 'bg-primary-container shadow-sm' : 'bg-surface-container-high'
+            }`}
+          >
+            <Text
+              className={`text-xs font-semibold ${
+                activeFilter === i ? 'text-on-primary' : 'text-on-surface-variant'
+              }`}
+            >
+              {filter}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+
+      <View className="bg-surface-container-lowest rounded-xl p-4 shadow-sm gap-y-3">
+        <View className="flex-row items-start justify-between gap-x-2">
+          <View className="flex-row items-center gap-x-2.5 flex-1 min-w-0">
+            <Image
+              source={{
+                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwTpR-i3w1JrYXXidIb_GKLcPAmiAVNol5LjAThntagykO3LWDAvWT6T08eD_6YKOGKiu388G_lS0pMLPnCwj5_xn4B4_[REDACTED: credential]-902E24bpG4k8l-hhAQqWT_pfUmr7I3',
+              }}
+              className="w-10 h-10 rounded-full shrink-0"
+            />
+            <View className="flex-col min-w-0">
+              <View className="flex-row items-center gap-x-1">
+                <Text className="text-sm font-semibold text-on-surface" numberOfLines={1}>
+                  Siti Nadia
+                </Text>
+                <MaterialIcons name="verified" size={16} color="#005338" />
+              </View>
+              <Text className="text-[11px] text-on-surface-variant">15 menit yang lalu • Bandung</Text>
+            </View>
+          </View>
+          <View className="px-2.5 py-1 rounded-full bg-secondary-fixed shrink-0">
+            <Text className="text-[11px] font-semibold text-on-secondary-fixed">Dicari Segera</Text>
+          </View>
+        </View>
+
+        <View className="flex-col gap-y-1">
+          <Text className="text-sm font-semibold text-on-surface">
+            Desain Feed Instagram UMKM Kuliner (12 Post)
+          </Text>
+          <Text className="text-xs text-on-surface-variant leading-relaxed" numberOfLines={3}>
+            Dibutuhkan desainer grafis kreatif untuk template promosi menu Ramadhan. Style modern,
+            ceria, dan siap posting dalam 2 hari. Bahan foto produk sudah lengkap.
+          </Text>
+        </View>
+
+        <View className="flex-row items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+          <View>
+            <Text className="text-[10px] text-on-surface-variant">Estimasi Anggaran</Text>
+            <Text className="text-sm font-bold text-primary">Rp 500rb - 1.2jt</Text>
+          </View>
+          <View className="flex-row items-center gap-x-1">
+            <MaterialIcons name="schedule" size={18} color="#777587" />
+            <Text className="text-xs font-semibold text-on-surface">Target: 2 Hari</Text>
+          </View>
+        </View>
+
+        <View className="flex-row items-center justify-between pt-1">
+          <View className="flex-row items-center gap-x-3">
+            <TouchableOpacity className="flex-row items-center gap-x-1">
+              <MaterialIcons name="favorite-border" size={18} color="#777587" />
+              <Text className="text-xs text-on-surface-variant">18</Text>
+            </TouchableOpacity>
+            <TouchableOpacity className="flex-row items-center gap-x-1">
+              <MaterialIcons name="forum" size={18} color="#777587" />
+              <Text className="text-xs text-on-surface-variant">5 Tawaran</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity className="flex-row items-center gap-x-1.5 px-4 py-2 rounded-lg bg-primary shadow-sm">
+            <MaterialIcons name="send" size={18} color="#ffffff" />
+            <Text className="text-xs font-bold text-white">Kirim Tawaran</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <View className="bg-surface-container-lowest rounded-xl p-4 shadow-sm gap-y-3">
+        <View className="flex-row items-start justify-between gap-x-2">
+          <View className="flex-row items-center gap-x-2.5 flex-1 min-w-0">
+            <Image
+              source={{
+                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB4EsCbOf0_[REDACTED: credential]-aSaYEOGyoPH_VVLLa4f6oM64RluBFxS5bMNvyfD_[REDACTED: credential]-pU0rwQot1_ebHgf81LeMasAQfI1C74Lp_j_2JVc7FFCEj7_I-b',
+              }}
+              className="w-10 h-10 rounded-full shrink-0"
+            />
+            <View className="flex-col min-w-0">
+              <View className="flex-row items-center gap-x-1">
+                <Text className="text-sm font-semibold text-on-surface" numberOfLines={1}>
+                  Rian Pratama
+                </Text>
+                <View className="px-1.5 py-0.5 rounded bg-tertiary-fixed">
+                  <Text className="text-[10px] font-bold text-on-tertiary-fixed">PRO</Text>
+                </View>
+              </View>
+              <View className="flex-row items-center gap-x-1">
+                <MaterialIcons name="star" size={14} color="#F59E0B" />
+                <Text className="text-xs font-bold text-on-surface">5.0</Text>
+                <Text className="text-[11px] text-on-surface-variant">(142 ulasan) • Teknisi AC</Text>
+              </View>
+            </View>
+          </View>
+          <View className="flex-row items-center gap-x-1 px-2 py-0.5 rounded-full bg-surface-container-high shrink-0">
+            <MaterialIcons name="verified-user" size={14} color="#777587" />
+            <Text className="text-[11px] text-on-surface-variant">Garansi 30 Hari</Text>
+          </View>
+        </View>
+
+        <View className="w-full h-36 rounded-lg overflow-hidden">
+          <Image
+            source={{
+              uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA-tyXoaPuwVIY39a_nMW58G4YMhLd9ZBBDvSHhVRONHd_6XrpoanafuD-[REDACTED: credential]-kZXJ85YDwZDDIO9Qz-[REDACTED: credential]',
+            }}
+            className="w-full h-full"
+            resizeMode="cover"
+          />
+        </View>
+
+        <View className="flex-row items-center justify-between pt-1">
+          <View>
+            <Text className="text-[10px] text-on-surface-variant">Mulai Dari</Text>
+            <View className="flex-row items-baseline gap-x-0.5">
+              <Text className="text-base font-bold text-primary">Rp 75.000</Text>
+              <Text className="text-xs text-on-surface-variant">/unit</Text>
+            </View>
+          </View>
+          <View className="flex-row items-center gap-x-2">
+            <TouchableOpacity className="w-9 h-9 rounded-lg bg-surface-container items-center justify-center">
+              <MaterialIcons name="bookmark-border" size={20} color="#131b2e" />
+            </TouchableOpacity>
+            <TouchableOpacity className="flex-row items-center gap-x-1.5 px-3.5 py-2 rounded-lg bg-secondary shadow-sm">
+              <MaterialIcons name="chat" size={18} color="#ffffff" />
+              <Text className="text-xs font-bold text-on-secondary">Pesan Cepat</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+}
 
 export default function DashboardScreen() {
   const insets = useSafeAreaInsets();
@@ -16,262 +393,47 @@ export default function DashboardScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-surface">
-      <View className="h-16 px-4 flex-row items-center justify-between bg-surface border-b border-surface-container-high">
-        <View className="flex-col">
-          <Text className="font-extrabold text-lg text-primary tracking-tight leading-tight">ServiConnect</Text>
-          <Text className="font-medium text-xs text-on-surface-variant">Beranda</Text>
-        </View>
-        <View className="flex-row items-center space-x-4">
-          <TouchableOpacity>
-            <MaterialIcons name="search" size={24} color="#1A1A2E" />
-          </TouchableOpacity>
-          <TouchableOpacity className="relative">
-            <MaterialIcons name="notifications" size={24} color="#1A1A2E" />
-            <View className="absolute top-0 right-0 w-2 h-2 rounded-full bg-error border border-surface" />
-          </TouchableOpacity>
-          <Image
-            source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFPHg2dPEoST1H7o5t_um0rM7dPKycfPprxxw-uiNxGi2DGiMsFvrlbbfscpwbValeIm0Tjd0a8_NEi-Id5i0WlJ5sq3izUel8OVeo-Q5E1hgSwqQl_AhyfzJkpPIrM3z0iNQsEctynkrG4164Z5prsspWlaQa9p4NI5oWQcaURkV9lTF59gT-ZtcYgIQD_W-PskDBJkZzMA_0WMbslCAdhLGpbC-Kp0LPKEG5XOrnqi8VcIDrMsn_' }}
-            className="w-9 h-9 rounded-full border-2 border-primary"
-          />
-        </View>
-      </View>
+      <AppHeader />
 
-      <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: BOTTOM_BAR_HEIGHT + 16 }}>
-        <View className="flex-row items-center justify-between mb-4">
-          <View className="flex-row items-center space-x-3">
-            <View className="relative">
-              <Image
-                source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDpb7zD1vW9I-BgTVWig8lvdHj5xMOeNRl5F2mSLGy93cosNJy0J0yGbrpQB_-JvJQrOHfwrRRrGjsM74yatS8jEAJ2bO3cJQizXPkj5RI1Dsd-mVknIV7Q4oGIiH06-odTH3JVj6NVf3WPk23Xzwe9dDttSzPKjpw9s1g43hqt08MFWPLjwTnkDm27cWpvkerB4OXL3DttKkqv2feX78mNXvDvjw0luktxIn9CyR_M58cYF2vR2P4I' }}
-                className="w-12 h-12 rounded-full"
-              />
-              <View className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-secondary rounded-full border-2 border-surface" />
-            </View>
-            <View>
-              <View className="flex-row items-center space-x-1">
-                <Text className="font-bold text-base text-on-surface">Halo, Reza Ramadhan</Text>
-                <MaterialIcons name="verified" size={14} color="#009688" />
-              </View>
-              <View className="flex-row items-center space-x-1">
-                <View className="w-2 h-2 rounded-full bg-secondary" />
-                <Text className="text-xs font-semibold text-secondary ml-1">Mode Menerima Pesanan</Text>
-              </View>
-            </View>
-          </View>
-          <TouchableOpacity className="w-10 h-10 rounded-xl bg-surface-container-high items-center justify-center">
-            <MaterialIcons name="tune" size={20} color="#5A5A7A" />
-          </TouchableOpacity>
-        </View>
-
-        {/* ── TIPS CARD ── */}
-        <View className="flex-row items-start space-x-3 p-4 bg-primary-fixed rounded-2xl mb-4 border border-primary-container">
-          <View className="w-9 h-9 rounded-lg bg-primary items-center justify-center">
-            <MaterialIcons name="tips-and-updates" size={18} color="#ffffff" />
-          </View>
-          <View className="flex-1">
-            <View className="flex-row justify-between">
-              <Text className="text-xs font-bold text-primary uppercase tracking-wide">Tips Mitra Cerdas</Text>
-              <Text className="text-xs text-on-surface-variant">Baru</Text>
-            </View>
-            <Text className="text-xs text-on-surface-variant mt-1 leading-relaxed">
-              2 penawaran jasa Anda sedang ditinjau calon klien. Respon cepat dalam 30 menit meningkatkan peluang closing.
-            </Text>
-          </View>
-        </View>
-
-        {/* ── BALANCE CARD ── */}
-        <View className="p-4 bg-primary rounded-2xl mb-4 shadow-lg">
-          <View className="flex-row justify-between mb-4">
-            <View className="flex-row items-center space-x-1 bg-white/20 px-2 py-1 rounded-full">
-              <MaterialIcons name="lock" size={12} color="#A0A0FF" />
-              <Text className="text-xs text-white ml-1">BCA • Rek 829xxxx902</Text>
-            </View>
-            <View className="flex-row items-center space-x-1 bg-white/20 px-2 py-1 rounded-full">
-              <MaterialIcons name="trending-up" size={12} color="#A0FFD0" />
-              <Text className="text-xs text-white font-bold ml-1">+18.4%</Text>
-            </View>
-          </View>
-
-          <Text className="text-xs text-white/70 font-medium">Saldo Siap Ditarik</Text>
-          <View className="flex-row items-baseline mb-4">
-            <Text className="text-white text-lg mr-1 font-semibold">Rp</Text>
-            <Text className="text-white text-3xl font-extrabold tracking-tight">4.850.000</Text>
-          </View>
-
-          <View className="flex-row justify-between items-end border-t border-white/20 pt-3">
-            <View>
-              <Text className="text-xs text-white/70">Total Pendapatan Bulan Ini</Text>
-              <Text className="text-white font-bold">Rp 12.350.000</Text>
-            </View>
-            <TouchableOpacity className="flex-row items-center bg-white px-3 py-2 rounded-xl">
-              <MaterialIcons name="payments" size={16} color="#3D3DE8" />
-              <Text className="text-primary font-bold ml-1.5">Tarik Saldo</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View className="flex-row justify-between mb-5">
-          {[
-            { icon: 'account-balance-wallet' as const, label: 'Tarik Saldo',   color: '#3D3DE8', bg: 'bg-primary-container' },
-            { icon: 'add-circle'              as const, label: 'Tambah\nJasa',  color: '#009688', bg: 'bg-secondary-container' },
-            { icon: 'qr-code-scanner'         as const, label: 'Scan Bayar',   color: '#1A1A2E', bg: 'bg-surface-container-high' },
-            { icon: 'receipt-long'            as const, label: 'Laporan &\nInvoice', color: '#009688', bg: 'bg-tertiary-container' },
-          ].map((item) => (
-            <TouchableOpacity key={item.label} className="items-center bg-surface-container-lowest p-3 rounded-2xl shadow-sm w-[23%]">
-              <View className={`w-10 h-10 rounded-xl ${item.bg} items-center justify-center mb-1.5`}>
-                <MaterialIcons name={item.icon} size={20} color={item.color} />
-              </View>
-              <Text className="text-[9px] text-center font-semibold text-on-surface leading-tight">{item.label}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        <View className="flex-row flex-wrap justify-between mb-5">
-          <View className="w-[48%] bg-surface-container-lowest p-4 rounded-2xl shadow-sm mb-3">
-            <View className="flex-row justify-between items-center mb-2">
-              <Text className="text-xs text-on-surface-variant font-medium">Pesanan Aktif</Text>
-              <View className="bg-primary-container p-1.5 rounded-lg">
-                <MaterialIcons name="pending-actions" size={14} color="#3D3DE8" />
-              </View>
-            </View>
-            <Text className="text-xl font-extrabold text-on-surface">4 <Text className="text-sm font-normal text-on-surface-variant">Proyek</Text></Text>
-            <Text className="text-[10px] text-secondary mt-1">● Sedang Berjalan</Text>
-          </View>
-
-          <View className="w-[48%] bg-surface-container-lowest p-4 rounded-2xl shadow-sm mb-3">
-            <View className="flex-row justify-between items-center mb-2">
-              <Text className="text-xs text-on-surface-variant font-medium">Selesai (Bln Ini)</Text>
-              <View className="bg-secondary-container p-1.5 rounded-lg">
-                <MaterialIcons name="check-circle" size={14} color="#009688" />
-              </View>
-            </View>
-            <Text className="text-xl font-extrabold text-on-surface">28 <Text className="text-sm font-normal text-on-surface-variant">Pesanan</Text></Text>
-            <Text className="text-[10px] text-secondary mt-1">✓ 100% on-Time</Text>
-          </View>
-
-          <View className="w-[48%] bg-surface-container-lowest p-4 rounded-2xl shadow-sm mb-3">
-            <View className="flex-row justify-between items-center mb-2">
-              <Text className="text-xs text-on-surface-variant font-medium">Rating Rata-rata</Text>
-              <View className="bg-primary-container p-1.5 rounded-lg">
-                <MaterialIcons name="star" size={14} color="#3D3DE8" />
-              </View>
-            </View>
-            <Text className="text-xl font-extrabold text-on-surface">4.9 <Text className="text-sm font-normal text-on-surface-variant">/ 5.0</Text></Text>
-            <Text className="text-[10px] text-on-surface-variant mt-1">96 ulasan terverifikasi</Text>
-          </View>
-
-          <View className="w-[48%] bg-surface-container-lowest p-4 rounded-2xl shadow-sm mb-3">
-            <View className="flex-row justify-between items-center mb-2">
-              <Text className="text-xs text-on-surface-variant font-medium">Tingkat Respons</Text>
-              <View className="bg-secondary-container p-1.5 rounded-lg">
-                <MaterialIcons name="bolt" size={14} color="#009688" />
-              </View>
-            </View>
-            <Text className="text-xl font-extrabold text-on-surface">98<Text className="text-base font-normal text-on-surface-variant">%</Text></Text>
-            <Text className="text-[10px] text-on-surface-variant mt-1">Rata-rata &lt; 15 mnt</Text>
-          </View>
-        </View>
-
-        <View className="mb-4">
-          <View className="flex-row justify-between items-center mb-3">
-            <View className="flex-row items-center space-x-2">
-              <Text className="text-base font-bold text-on-surface">Pesanan Pelanggan</Text>
-              <View className="bg-primary px-2 py-0.5 rounded-full">
-                <Text className="text-white text-[10px] font-bold">4 Aktif</Text>
-              </View>
-            </View>
-            <TouchableOpacity>
-              <Text className="text-primary text-xs font-semibold">Lihat Semua</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View className="flex-row space-x-2 mb-3">
-            {['Sedang Dikerjakan (4)', 'Menunggu Review (2)', 'Skip'].map((tab, i) => (
-              <TouchableOpacity
-                key={tab}
-                className={`px-3 py-1.5 rounded-full ${i === 0 ? 'bg-primary' : 'bg-surface-container-high'}`}
-              >
-                <Text className={`text-[10px] font-semibold ${i === 0 ? 'text-white' : 'text-on-surface-variant'}`}>{tab}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-
-          <View className="bg-surface-container-lowest p-4 rounded-2xl shadow-sm mb-3 border border-surface-container-high">
-            <View className="flex-row justify-between items-center mb-3">
-              <View className="flex-row items-center space-x-2">
-                <Text className="text-xs font-bold text-on-surface-variant">#SC-8921</Text>
-                <View className="bg-primary-container px-2 py-0.5 rounded-full">
-                  <Text className="text-primary text-[10px] font-bold">Sedang Dikerjakan</Text>
-                </View>
-              </View>
-              <View className="bg-error-container px-2 py-0.5 rounded-full flex-row items-center">
-                <MaterialIcons name="timer" size={10} color="#BA1A1A" />
-                <Text className="text-error text-[10px] font-bold ml-1">1 Hari 6 Jam</Text>
-              </View>
-            </View>
-
-            <View className="flex-row mb-3">
-              <Image
-                source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDmw1vniv4-kF0cIFF7cmsc355hyEaaDmRF3df7SiFVzIt4gcXPMUGeJ0T5ZxUpXM_LeEv1zDQIfTpuxzdZBLvwlimhueASiWF3fiPmlbjztP6WB7fCg1crP_EHAKQn9480TWigNXlz8VMUwJH_o0X_Ro5p4bnjxlzgser8YC_0CI8A6AQh37Y-I9G4MMRNqYUm9xrtZ7W2xR1NpuaBg5xhURtPFUI9cc-NJOuVVICg_LOFTQkxUS7H' }}
-                className="w-10 h-10 rounded-full mr-3"
-              />
-              <View className="flex-1">
-                <View className="flex-row items-center space-x-1">
-                  <Text className="font-bold text-sm text-on-surface">Budi Santoso</Text>
-                  <MaterialIcons name="verified" size={12} color="#009688" />
-                </View>
-                <Text className="text-xs text-on-surface-variant">PT Inovasi Digital Nusantara</Text>
-                <Text className="text-sm font-bold text-primary mt-0.5">Desain UI/UX Mobile App (Figma Prototype)</Text>
-              </View>
-            </View>
-
-            <View className="flex-row justify-between bg-surface-container-low p-3 rounded-xl mb-3">
-              <View>
-                <Text className="text-[10px] text-on-surface-variant">Status Escrow</Text>
-                <Text className="text-xs font-bold text-secondary">Dana Diamankan</Text>
-              </View>
-              <View className="items-end">
-                <Text className="text-[10px] text-on-surface-variant">Biaya Proyek</Text>
-                <Text className="text-sm font-bold text-on-surface">Rp 1.500.000</Text>
-              </View>
-            </View>
-
-            <View className="flex-row space-x-2">
-              <TouchableOpacity className="flex-1 flex-row justify-center items-center bg-surface-container-low py-2.5 rounded-xl">
-                <MaterialIcons name="chat" size={14} color="#3D3DE8" />
-                <Text className="text-xs font-bold text-primary ml-1">Chat Klien</Text>
-              </TouchableOpacity>
-              <TouchableOpacity className="flex-1 flex-row justify-center items-center bg-primary py-2.5 rounded-xl">
-                <MaterialIcons name="upload-file" size={14} color="#ffffff" />
-                <Text className="text-xs font-bold text-white ml-1">Kirim Progres</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-
+      <ScrollView
+        contentContainerStyle={{
+          paddingHorizontal: 16,
+          paddingTop: 16,
+          paddingBottom: BOTTOM_BAR_HEIGHT + 16,
+          gap: 20,
+        }}
+        showsVerticalScrollIndicator={false}
+      >
+        <GreetingSection />
+        <BalanceCard />
+        <StatsStrip />
+        <UrgentOrderSpotlight />
+        <CommunityFeed />
       </ScrollView>
 
+      {/* Bottom Navigation */}
       <View
         style={{ height: BOTTOM_BAR_HEIGHT, paddingBottom: insets.bottom }}
-        className="absolute bottom-0 w-full flex-row bg-surface-container-lowest border-t border-surface-container-high justify-around items-center px-2"
+        className="absolute bottom-0 w-full flex-row bg-surface/90 border-t border-surface-container-high justify-around items-center px-2"
       >
-        <TouchableOpacity className="items-center flex-1">
-          <MaterialIcons name="home" size={24} color="#3D3DE8" />
+        <TouchableOpacity className="flex-1 items-center justify-center h-full">
+          <MaterialIcons name="home" size={24} color="#3525cd" />
           <Text className="text-[10px] text-primary font-bold mt-0.5">Beranda</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="items-center flex-1">
+        <TouchableOpacity className="flex-1 items-center justify-center h-full">
           <MaterialIcons name="explore" size={24} color="#9090B0" />
           <Text className="text-[10px] text-outline mt-0.5">Eksplor</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity className="items-center justify-center w-14 h-14 rounded-full bg-primary -mt-6 shadow-lg border-4 border-surface flex-1">
-          <MaterialIcons name="add" size={28} color="#ffffff" />
-        </TouchableOpacity>
-
-        <TouchableOpacity className="items-center flex-1">
+        <View className="flex-1 items-center justify-center">
+          <TouchableOpacity className="w-12 h-12 rounded-full bg-primary-container items-center justify-center -mt-6 shadow-lg">
+            <MaterialIcons name="add" size={28} color="#ffffff" />
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity className="flex-1 items-center justify-center h-full">
           <MaterialIcons name="chat-bubble-outline" size={24} color="#9090B0" />
           <Text className="text-[10px] text-outline mt-0.5">Pesan</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="items-center flex-1">
+        <TouchableOpacity className="flex-1 items-center justify-center h-full">
           <MaterialIcons name="account-circle" size={24} color="#9090B0" />
           <Text className="text-[10px] text-outline mt-0.5">Profil</Text>
         </TouchableOpacity>
