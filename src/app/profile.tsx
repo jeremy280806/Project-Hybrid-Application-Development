@@ -25,8 +25,12 @@ export default function ProfileScreen() {
           <View className="w-24 h-24 rounded-full bg-primary-container items-center justify-center mb-3">
             <MaterialIcons name="person" size={48} color="#ffffff" />
           </View>
-          <Text className="font-bold text-xl text-on-surface">Nama Pengguna</Text>
-          <Text className="text-sm text-on-surface-variant mt-1">pengguna@email.com</Text>
+          <Text className="font-bold text-xl text-on-surface">
+            Nama Pengguna
+          </Text>
+          <Text className="text-sm text-on-surface-variant mt-1">
+            pengguna@email.com
+          </Text>
         </View>
 
         <View className="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-4">

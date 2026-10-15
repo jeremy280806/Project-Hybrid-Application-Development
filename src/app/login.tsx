@@ -31,41 +31,40 @@ export default function LoginScreen() {
       <View className="h-16 px-4 flex-row items-center justify-between bg-surface">
         <View className="flex-row items-center space-x-2">
           <TouchableOpacity className="w-11 h-11 items-center justify-center rounded-full">
-            <MaterialIcons name="arrow-back" size={24} color="#1A1A2E" />
+            <MaterialIcons name="arrow-back" size={24} color="#131b2e" />
           </TouchableOpacity>
-          <Image
-            source={{ uri: 'https://lh3.googleusercontent.com/aida/AEtjO1U7SWm8KsaSpYxO_ehQaZEwemqVWzbLRob36PkI3VLfp9lIyeyNmNk-dD9rgGO8Xni8luJDbfeiTlmCT6SIqMOTUYnxMdz-ZQrLXTn_iMEFv7tyNC6hNEDHKs4Fj7qyxa3MT9Y9QmFztv0KaQPWU3s7JDKRWuCjUKEiE05Zi4myhquXN91cg1J9d0szd92RrVLN_K1XsKWfXTRixiZ1xYDReNcH35vCrwawLN-NZZ5bk7bQBuHGALA3LCU' }}
-            className="h-8 w-8"
-            resizeMode="contain"
-          />
           <Text className="font-bold text-lg text-on-surface ml-1">ServiConnect</Text>
         </View>
         <View className="flex-row items-center space-x-2">
-          <Text className="text-on-surface-variant font-semibold uppercase text-xs tracking-widest">Login</Text>
-          <View className="w-9 h-9 rounded-full bg-primary items-center justify-center">
+          <Text className="text-on-surface-variant font-semibold uppercase text-xs tracking-wide">Login</Text>
+          <View className="w-8 h-8 rounded-full bg-primary items-center justify-center">
             <MaterialIcons name="person" size={18} color="#ffffff" />
           </View>
         </View>
       </View>
 
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 20, paddingBottom: 40 }}>
+      <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40 }}>
 
-        <View className="items-center mb-8">
-          <View className="mb-5 relative">
-            <View className="w-20 h-20 rounded-2xl bg-primary items-center justify-center shadow-lg">
-              <MaterialIcons name="chat" size={38} color="#ffffff" />
+        <View className="items-center mb-6">
+          <View className="mb-4 relative">
+            <View className="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-md items-center justify-center p-2">
+              <Image
+                source={require('../../assets/images/logo.png')}
+                style={{ width: 56, height: 56, borderRadius: 8 }}
+                resizeMode="contain"
+              />
             </View>
-            <View className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-secondary items-center justify-center shadow-sm border-2 border-surface">
+            <View className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-tertiary-container items-center justify-center shadow-sm">
               <MaterialIcons name="verified" size={14} color="#ffffff" />
             </View>
           </View>
 
-          <View className="flex-row items-center space-x-2 px-4 py-1.5 rounded-full bg-surface-container-high mb-4">
-            <View className="w-2 h-2 rounded-full bg-secondary" />
+          <View className="flex-row items-center space-x-2 px-3 py-1 rounded-full bg-surface-container-high mb-2">
+            <View className="w-2 h-2 rounded-full bg-tertiary" />
             <Text className="text-on-surface-variant text-xs font-medium ml-1.5">Komunitas Jasa Terpercaya</Text>
           </View>
 
-          <Text className="font-bold text-2xl text-on-surface text-center mb-2">
+          <Text className="font-bold text-2xl text-on-surface text-center mb-1">
             Selamat Datang Kembali! 👋
           </Text>
           <Text className="text-sm text-on-surface-variant text-center leading-5" style={{ maxWidth: 280 }}>
@@ -73,55 +72,59 @@ export default function LoginScreen() {
           </Text>
         </View>
 
-        <View className="bg-surface-container-lowest rounded-2xl shadow-sm p-6 mb-6">
+        <View className="bg-surface-container-lowest rounded-xl shadow-sm p-6 mb-6">
 
           <View className="mb-4">
-            <Text className="text-xs font-semibold text-on-surface-variant mb-1.5">Email / No. Handphone</Text>
+            <Text className="text-xs font-semibold text-on-surface-variant mb-1">Email / No. Handphone</Text>
             <View className="relative justify-center">
               <View className="absolute left-4 z-10">
-                <MaterialIcons name="alternate-email" size={20} color="#9090B0" />
+                <MaterialIcons name="alternate-email" size={20} color="#777587" />
               </View>
               <TextInput
                 className="w-full h-12 pl-11 pr-4 bg-surface-container-low text-on-surface rounded-xl"
                 placeholder="contoh@email.com atau 0812xxxx"
-                placeholderTextColor="#9090B0"
+                placeholderTextColor="#777587"
               />
             </View>
           </View>
 
           <View className="mb-2">
-            <Text className="text-xs font-semibold text-on-surface-variant mb-1.5">Kata Sandi</Text>
+            <Text className="text-xs font-semibold text-on-surface-variant mb-1">Kata Sandi</Text>
             <View className="relative justify-center">
               <View className="absolute left-4 z-10">
-                <MaterialIcons name="lock-outline" size={20} color="#9090B0" />
+                <MaterialIcons name="lock" size={20} color="#777587" />
               </View>
               <TextInput
                 className="w-full h-12 pl-11 pr-12 bg-surface-container-low text-on-surface rounded-xl"
                 placeholder="Masukkan kata sandi"
-                placeholderTextColor="#9090B0"
+                placeholderTextColor="#777587"
                 secureTextEntry={!showPassword}
               />
               <TouchableOpacity
                 className="absolute right-3 w-9 h-9 items-center justify-center z-10"
                 onPress={() => setShowPassword(!showPassword)}
               >
-                <MaterialIcons name={showPassword ? "visibility" : "visibility-off"} size={20} color="#9090B0" />
+                <MaterialIcons name={showPassword ? "visibility" : "visibility-off"} size={20} color="#777587" />
               </TouchableOpacity>
             </View>
           </View>
 
-          <View className="flex-row items-center justify-between mb-6 mt-3">
+          <View className="flex-row items-center justify-between mb-6 mt-2">
             <TouchableOpacity
               className="flex-row items-center"
               onPress={() => setRememberMe(!rememberMe)}
             >
-              <View className={`w-4 h-4 rounded border-2 items-center justify-center mr-2 ${rememberMe ? 'bg-primary border-primary' : 'border-outline'}`}>
-                {rememberMe && <MaterialIcons name="check" size={10} color="#ffffff" />}
+              <View className={`w-4 h-4 rounded border items-center justify-center mr-2 ${rememberMe ? 'bg-primary-container border-primary-container' : 'border-outline'}`}>
+                {rememberMe && <MaterialIcons name="check" size={12} color="#ffffff" />}
               </View>
-              <Text className="text-xs text-on-surface-variant">Ingat Saya</Text>
+              <Text className="text-xs text-on-surface-variant">
+                Ingat Saya
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity>
-              <Text className="text-xs text-primary font-semibold">Lupa Kata Sandi?</Text>
+              <Text className="text-xs text-primary-container font-semibold">
+                Lupa Kata Sandi?
+              </Text>
             </TouchableOpacity>
           </View>
 
@@ -131,46 +134,69 @@ export default function LoginScreen() {
             disabled={isLoading}
           >
             {isLoading ? (
-              <Text className="text-white font-bold text-base">Memverifikasi...</Text>
+              <Text className="text-white font-bold text-base">
+                Memverifikasi...
+              </Text>
             ) : (
               <>
-                <Text className="text-white font-bold text-base mr-2">Masuk Sekarang</Text>
+                <Text className="text-white font-bold text-base mr-2">
+                  Masuk Sekarang
+                </Text>
                 <MaterialIcons name="arrow-forward" size={18} color="#ffffff" />
               </>
             )}
           </TouchableOpacity>
 
           <View className="flex-row items-center justify-center py-2 px-3 bg-surface-container-low rounded-lg">
-            <MaterialIcons name="security" size={14} color="#009688" />
-            <Text className="text-[10px] text-on-surface-variant ml-2">Koneksi terenkripsi standar industri 256-bit</Text>
+            <MaterialIcons name="security" size={16} color="#005338" />
+            <Text className="text-[10px] text-on-surface-variant ml-2">
+              Koneksi terenkripsi standar industri 256-bit
+            </Text>
           </View>
         </View>
 
         <View className="flex-row items-center justify-center mb-5">
           <View className="flex-1 h-px bg-surface-container-highest" />
-          <Text className="text-xs text-outline mx-4 uppercase tracking-widest">atau masuk dengan</Text>
+          <Text className="text-xs text-outline mx-4 uppercase tracking-wider">
+            atau masuk dengan
+          </Text>
           <View className="flex-1 h-px bg-surface-container-highest" />
         </View>
 
-        <TouchableOpacity className="w-full h-12 px-4 rounded-xl bg-surface-container-lowest border border-surface-container-high shadow-sm flex-row items-center justify-center mb-3">
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#EA4335' }}>G</Text>
-          <Text className="text-on-surface font-semibold ml-3">Lanjutkan dengan Google</Text>
+        <TouchableOpacity className="w-full h-12 px-4 rounded-xl bg-surface-container-lowest shadow-sm flex-row items-center justify-center mb-3">
+          <MaterialIcons name="g-translate" size={20} color="#EA4335" />
+          <Text className="text-on-surface font-semibold ml-3">
+            Lanjutkan dengan Google
+          </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="w-full h-12 px-4 rounded-xl bg-apple-dark shadow-sm flex-row items-center justify-center">
+        <TouchableOpacity className="w-full h-12 px-4 rounded-xl bg-inverse-surface shadow-sm flex-row items-center justify-center">
           <MaterialIcons name="apple" size={20} color="#ffffff" />
-          <Text className="text-white font-semibold ml-3">Lanjutkan dengan Apple</Text>
+          <Text className="text-inverse-on-surface font-semibold ml-3">
+            Lanjutkan dengan Apple
+          </Text>
         </TouchableOpacity>
-        
+     
         <View className="mt-8 items-center">
           <View className="flex-row mb-2 flex-wrap justify-center">
-            <Text className="text-sm text-on-surface">Belum punya akun ServiConnect? </Text>
+            <Text className="text-sm text-on-surface">
+              Belum punya akun ServiConnect? 
+            </Text>
             <TouchableOpacity>
-              <Text className="text-sm text-primary font-bold">Daftar Sekarang</Text>
+              <Text className="text-sm text-primary-container font-semibold">
+                Daftar Sekarang
+              </Text>
             </TouchableOpacity>
           </View>
           <Text className="text-xs text-outline text-center" style={{ maxWidth: 280 }}>
-            Dengan masuk, Anda menyetujui <Text className="underline">Ketentuan Layanan</Text> &amp; <Text className="underline">Kebijakan Privasi</Text> ServiConnect.
+            Dengan masuk, Anda menyetujui 
+            <Text className="underline">
+              Ketentuan Layanan
+            </Text> &amp; 
+              <Text className="underline">
+                Kebijakan Privasi
+              </Text> 
+              ServiConnect.
           </Text>
         </View>
       </ScrollView>
