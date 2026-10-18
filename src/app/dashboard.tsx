@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 type MaterialIconName = React.ComponentProps<typeof MaterialIcons>['name'];
 
@@ -487,6 +488,7 @@ function CommunityFeed() {
 }
 
 export default function DashboardScreen() {
+  const router = useRouter();
   const insets = useSafeAreaInsets();
   const BOTTOM_BAR_HEIGHT = 64 + insets.bottom;
 
@@ -542,7 +544,9 @@ export default function DashboardScreen() {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="flex-1 items-center justify-center h-full">
+        <TouchableOpacity className="flex-1 items-center justify-center h-full" 
+        onPress={() => router.push('/profile')}
+          >
           <MaterialIcons name="account-circle" size={24} color="#9090B0" />
           <Text className="text-[10px] text-outline mt-0.5">
             Profil
