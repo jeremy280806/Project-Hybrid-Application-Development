@@ -131,3 +131,18 @@ function ProfileCard() {
     </View>
   );
 }
+
+function LayananTab() {
+  return (
+    View className="flex-col gap-y-4">
+      <View className="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex-col">
+        <View className="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container">
+          <Image
+            source={{
+              uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAqfT1NrzQV_0B55DylgSTpAB984dPK13J2uwd58w9zgTBqHRA-cJTgcmOajQSzZSm0WMtGB63PXiV4A0h2AyGPsyV-25yfZFo08viWfSssFlFYYcTQujzU-k4_1AoD0kQ39ExqW1eLRhrI1aVA9tbM_SZp6PoLZi7p0cIs6IWAGyJYp-SPiaB8TMg9ppGo9jGD087pR0pqbu91_mgb99LC1q-S63JCzuN6SKpJeTGZ44aWN02HCSnI',
+            }}
+            className="w-full h-full"
+            resizeMode="cover"
+          />
+  );
+}
