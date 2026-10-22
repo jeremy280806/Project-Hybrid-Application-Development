@@ -198,3 +198,11 @@ function LayananTab() {
     </View>
   );
 }
+
+export default function ProfileScreen() {
+  const router = useRouter();
+  const insets = useSafeAreaInsets();
+  const BOTTOM_BAR_HEIGHT = 64 + insets.bottom;
+
+  const [activeTab, setActiveTab] = useState<'layanan' | 'ulasan'>('layanan');
+}
