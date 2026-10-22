@@ -134,7 +134,7 @@ function ProfileCard() {
 
 function LayananTab() {
   return (
-    View className="flex-col gap-y-4">
+    <View className="flex-col gap-y-4">
       <View className="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex-col">
         <View className="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container">
           <Image
@@ -144,5 +144,57 @@ function LayananTab() {
             className="w-full h-full"
             resizeMode="cover"
           />
+          <View className="absolute top-2 left-2 bg-primary px-2.5 py-0.5 rounded-full shadow-sm">
+            <Text className="text-[10px] text-white font-bold">Populer</Text>
+          </View>
+          <View className="absolute bottom-2 right-2 bg-white/90 px-2 py-0.5 rounded-full flex-row items-center gap-x-1">
+            <MaterialIcons name="schedule" size={14} color="#131b2e" />
+            <Text className="text-[10px] text-on-surface font-semibold">3-5 Hari Kerja</Text>
+          </View>
+        </View>
+
+        <View className="mt-3 flex-col">
+          <View className="flex-row items-center justify-between">
+            <Text className="text-[10px] font-bold text-primary uppercase tracking-wider">
+              Desain Antarmuka
+            </Text>
+            <View className="flex-row items-center gap-x-0.5">
+              <MaterialIcons name="star" size={15} color="#F59E0B" />
+              <Text className="text-xs font-semibold text-amber-500">5.0 (42)</Text>
+            </View>
+          </View>
+          <Text className="text-sm font-bold text-on-surface mt-1">
+            Desain UI/UX Mobile App (Figma Prototype)
+          </Text>
+          <Text className="text-xs text-on-surface-variant mt-1 leading-relaxed" numberOfLines={2}>
+            Paket lengkap riset UX, Wireframing, High-Fidelity UI Design hingga Prototype
+            interaktif Figma siap handover developer.
+          </Text>
+
+          <View className="flex-row gap-x-1.5 mt-3 flex-wrap">
+            <View className="px-2 py-0.5 rounded-full bg-surface-container">
+              <Text className="text-[10px] text-on-surface-variant">Figma Master</Text>
+            </View>
+            <View className="px-2 py-0.5 rounded-full bg-surface-container">
+              <Text className="text-[10px] text-on-surface-variant">Design System</Text>
+            </View>
+            <View className="px-2 py-0.5 rounded-full bg-surface-container">
+              <Text className="text-[10px] text-on-surface-variant">Revisi 3x</Text>
+            </View>
+          </View>
+
+          <View className="mt-4 pt-3 flex-row items-center justify-between bg-surface-container-low rounded-lg p-2.5">
+            <View>
+              <Text className="text-[10px] text-on-surface-variant">Mulai dari</Text>
+              <Text className="text-base font-bold text-primary">Rp 1.500.000</Text>
+            </View>
+            <TouchableOpacity className="h-9 px-4 rounded-lg bg-primary flex-row items-center gap-x-1 shadow-sm">
+              <Text className="text-xs font-bold text-white">Pesan Jasa</Text>
+              <MaterialIcons name="arrow-forward" size={16} color="#ffffff" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </View>
   );
 }
