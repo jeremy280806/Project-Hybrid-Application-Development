@@ -51,9 +51,7 @@ function ProfileCard() {
       <View className="w-full h-36 bg-primary rounded-b-2xl relative overflow-hidden p-3 justify-between">
         <View className="self-end bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full flex-row items-center gap-x-1">
           <View className="w-2 h-2 rounded-full bg-tertiary" />
-          <Text className="text-[11px] font-bold text-tertiary">
-            Top Rated Pro
-          </Text>
+          <Text className="text-[11px] font-bold text-tertiary">Top Rated Pro</Text>
         </View>
       </View>
 
@@ -73,17 +71,13 @@ function ProfileCard() {
 
             <View className="flex-row items-center gap-x-1.5 px-3 py-1.5 rounded-full bg-surface-container-low">
               <View className="w-2.5 h-2.5 rounded-full bg-tertiary" />
-              <Text className="text-xs font-semibold text-tertiary">
-                Online • Terima Order
-              </Text>
+              <Text className="text-xs font-semibold text-tertiary">Online • Terima Order</Text>
             </View>
           </View>
 
           <View className="mt-3 flex-col">
             <View className="flex-row items-center gap-x-1.5">
-              <Text className="text-xl font-bold text-on-surface">
-                Dimas Setiawan
-              </Text>
+              <Text className="text-xl font-bold text-on-surface">Dimas Setiawan</Text>
               <MaterialIcons name="check-circle" size={18} color="#3525cd" />
             </View>
             <Text className="text-sm font-medium text-primary mt-0.5">
@@ -92,14 +86,10 @@ function ProfileCard() {
 
             <View className="flex-row items-center gap-x-1 mt-1">
               <MaterialIcons name="location-on" size={16} color="#777587" />
-              <Text className="text-xs text-on-surface-variant">
-                Jakarta Selatan
-              </Text>
+              <Text className="text-xs text-on-surface-variant">Jakarta Selatan</Text>
               <Text className="text-xs text-outline mx-1">•</Text>
               <MaterialIcons name="verified-user" size={16} color="#005338" />
-              <Text className="text-xs text-on-surface-variant">
-                Terverifikasi KTP &amp; Portofolio
-              </Text>
+              <Text className="text-xs text-on-surface-variant">Terverifikasi KTP &amp; Portofolio</Text>
             </View>
           </View>
 
@@ -189,9 +179,7 @@ function LayananTab() {
               <Text className="text-[10px] text-on-surface-variant">Design System</Text>
             </View>
             <View className="px-2 py-0.5 rounded-full bg-surface-container">
-              <Text className="text-[10px] text-on-surface-variant">
-                Revisi 3x
-              </Text>
+              <Text className="text-[10px] text-on-surface-variant">Revisi 3x</Text>
             </View>
           </View>
 
@@ -216,118 +204,5 @@ export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
   const BOTTOM_BAR_HEIGHT = 64 + insets.bottom;
 
-  const [activeTab, setActiveTab] = useState<'layanan' | 'feed' | 'ulasan'>('layanan');
-
-  return (
-    <SafeAreaView className="flex-1 bg-surface">
-      <ProfileHeader />
-
-      <ScrollView
-        contentContainerStyle={{
-          paddingBottom: BOTTOM_BAR_HEIGHT + 16,
-          gap: 16,
-        }}
-        showsVerticalScrollIndicator={false}
-      >
-        <ProfileCard />
-
-        <View className="px-4">
-          <View className="bg-surface-container-low p-1 rounded-xl flex-row items-center justify-between">
-            <TouchableOpacity
-              onPress={() => setActiveTab('layanan')}
-              className={`flex-1 py-2 rounded-lg ${
-                activeTab === 'layanan' ? 'bg-surface-container-lowest shadow-sm' : ''
-              }`}
-            >
-              <Text
-                className={`text-xs text-center ${
-                  activeTab === 'layanan' ? 'text-primary font-bold' : 'text-on-surface-variant'
-                }`}
-              >
-                Layanan Aktif
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => setActiveTab('feed')}
-              className={`flex-1 py-2 rounded-lg ${
-                activeTab === 'feed' ? 'bg-surface-container-lowest shadow-sm' : ''
-              }`}
-            >
-              <Text
-                className={`text-xs text-center ${
-                  activeTab === 'feed' ? 'text-primary font-bold' : 'text-on-surface-variant'
-                }`}
-              >
-                Postingan Feed
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => setActiveTab('ulasan')}
-              className={`flex-1 py-2 rounded-lg ${
-                activeTab === 'ulasan' ? 'bg-surface-container-lowest shadow-sm' : ''
-              }`}
-            >
-              <Text
-                className={`text-xs text-center ${
-                  activeTab === 'ulasan' ? 'text-primary font-bold' : 'text-on-surface-variant'
-                }`}
-              >
-                Ulasan Klien
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <View className="mt-4">
-            {activeTab === 'layanan' && <LayananTab />}
-            {activeTab === 'feed' && (
-              <View className="p-6 bg-surface-container-lowest rounded-xl items-center">
-                <Text className="text-xs text-on-surface-variant">Belum ada postingan feed.</Text>
-              </View>
-            )}
-            {activeTab === 'ulasan' && (
-              <View className="p-6 bg-surface-container-lowest rounded-xl items-center">
-                <Text className="text-xs text-on-surface-variant">96 ulasan terverifikasi.</Text>
-              </View>
-            )}
-          </View>
-        </View>
-      </ScrollView>
-
-      <View
-        style={{ height: BOTTOM_BAR_HEIGHT, paddingBottom: insets.bottom }}
-        className="absolute bottom-0 w-full flex-row bg-surface/90 border-t border-surface-container-high justify-around items-center px-2"
-      >
-        <TouchableOpacity
-          className="flex-1 items-center justify-center h-full"
-          onPress={() => router.push('/dashboard')}
-        >
-          <MaterialIcons name="home" size={24} color="#9090B0" />
-          <Text className="text-[10px] text-outline mt-0.5">Beranda</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity className="flex-1 items-center justify-center h-full">
-          <MaterialIcons name="explore" size={24} color="#9090B0" />
-          <Text className="text-[10px] text-outline mt-0.5">Eksplor</Text>
-        </TouchableOpacity>
-
-        <View className="flex-1 items-center justify-center">
-          <TouchableOpacity className="w-12 h-12 rounded-full bg-primary items-center justify-center -mt-6 shadow-lg">
-            <MaterialIcons name="add" size={28} color="#ffffff" />
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity className="flex-1 items-center justify-center h-full">
-          <MaterialIcons name="chat-bubble-outline" size={24} color="#9090B0" />
-          <Text className="text-[10px] text-outline mt-0.5">Pesan</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity className="flex-1 items-center justify-center h-full">
-          <MaterialIcons name="account-circle" size={24} color="#3525cd" />
-          <Text className="text-[10px] text-primary font-bold mt-0.5">Profil</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
-  );
+  const [activeTab, setActiveTab] = useState<'layanan' | 'ulasan'>('layanan');
 }
