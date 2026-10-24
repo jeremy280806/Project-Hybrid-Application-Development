@@ -21,14 +21,12 @@ export default function LoginScreen() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
-    if (!identifier || !password) return;
-
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      router.replace('/dashboard');
-    }, 1200);
-  };
+  setIsLoading(true);
+  setTimeout(() => {
+    setIsLoading(false);
+    router.replace('/dashboard');
+  }, 1200);
+};
 
   return (
     <SafeAreaView className="flex-1 bg-[#faf8ff]">
