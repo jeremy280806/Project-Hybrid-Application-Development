@@ -77,7 +77,7 @@ export default function LoginScreen() {
           </View>
 
           <Text className="font-bold text-2xl text-[#131b2e] text-center mb-1.5 tracking-tight">
-            Selamat Datang Kembali! 👋
+            Selamat Datang Kembali! 
           </Text>
           <Text
             className="text-sm text-[#464555] text-center leading-5"
