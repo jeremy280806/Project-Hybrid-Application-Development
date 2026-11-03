@@ -1,24 +1,24 @@
-# ServiConnect: Platform Ekosistem Service Agent Terintegrasi
+# ServiConnect: Platform Ekosistem Agen Layanan Terintegrasi
 
 ## Latar Belakang & Alasan Pemilihan Proyek
-Di era mobilitas dan digitalisasi saat ini, kebutuhan akan **Service Agent** (penyedia jasa/keahlian) sangat dibutuhkan di berbagai bidang—mulai dari perbaikan rumah, IT & desain, hingga tutor privat. Namun, pasar penyedia jasa saat ini masih sangat terfragmentasi. Membangun platform khusus yang menjembatani klien dengan penyedia jasa secara profesional adalah solusi krusial untuk menciptakan ekosistem *gig economy* yang aman, terpercaya, dan terstruktur.
+Di zaman mobilitas dan digitalisasi saat ini, permintaan akan **Agen Layanan** (penyedia jasa/keahlian) sangat tinggi di berbagai sektor—mulai dari perbaikan rumah, IT & desain, hingga pengajaran privat. Namun, pasar penyedia jasa saat ini masih sangat terfragmentasi. Membangun platform khusus yang menghubungkan klien dengan penyedia jasa secara profesional adalah solusi penting untuk menciptakan ekosistem *gig economy* yang aman, terpercaya, dan terstruktur.
 
-## Masalah Utama (Problem Statement)
-1. **Pencarian yang Terpecah (Fragmented Search):** Masyarakat sering kesulitan menemukan teknisi atau *freelancer* yang dapat dipercaya dengan cepat karena masih mengandalkan grup WhatsApp, Facebook, atau rekomendasi dari mulut ke mulut.
-2. **Ketidakjelasan Harga & Standar:** Kurangnya transparansi tarif dan detail layanan sering memicu keraguan atau konflik harga di akhir pekerjaan.
-3. **Krisis Kepercayaan & Keamanan:** Klien sulit memvalidasi keahlian penyedia jasa (ketiadaan portofolio/ulasan terpusat), dan sebaliknya, penyedia jasa sering menghadapi risiko klien fiktif atau gagal bayar.
+## Masalah Utama (Pernyataan Masalah)
+1. **Pencarian yang Terpecah (Pencarian Terfragmentasi):** Masyarakat sering mengalami kesulitan dalam menemukan teknisi atau *freelancer* yang dapat diandalkan dengan cepat karena masih bergantung pada grup WhatsApp, Facebook, atau rekomendasi dari mulut ke mulut.
+2. **Ketidakjelasan Harga & Standar:** Kurangnya transparansi dalam tarif dan rincian layanan sering kali menimbulkan keraguan atau konflik harga di akhir pekerjaan.
+3. **Krisis Kepercayaan & Keamanan:** Klien sulit untuk memvalidasi keahlian penyedia jasa (ketiadaan portofolio/ulasan terpusat), dan sebaliknya, penyedia jasa sering menghadapi risiko klien fiktif atau gagal bayar.
 
 ## Target Pengguna
-1. **Pencari Jasa (Klien / Konsumen):** Individu, rumah tangga, atau UMKM yang membutuhkan solusi/jasa cepat, spesifik, dan berkualitas.
-2. **Penyedia Jasa (Service Agent / Mitra Pro):** Pekerja lepas (*freelancer*), teknisi, desainer, dan profesional independen yang ingin mengelola pesanan, memperluas jangkauan klien, dan membangun reputasi digital.
+1. **Pencari Jasa (Klien / Konsumen):** Individu, rumah tangga, atau UMKM yang memerlukan solusi/jasa yang cepat, spesifik, dan berkualitas.
+2. **Penyedia Jasa (Agen Layanan / Mitra Pro):** Pekerja lepas (*freelancer*), teknisi, desainer, dan profesional independen yang ingin mengelola pesanan, memperluas jangkauan klien, dan membangun reputasi digital.
 
 ## Kebutuhan Pengguna (User Needs)
-Berikut adalah minimal 5 kebutuhan utama dari target pengguna:
-1. **Pencarian Cerdas & Spesifik:** Pengguna butuh mencari jasa berdasarkan lokasi terdekat, rating, dan ketersediaan waktu.
-2. **Validasi Kredibilitas:** Pengguna butuh melihat portofolio visual, *badge* verifikasi, dan ulasan klien sebelumnya untuk membangun rasa percaya.
-3. **Manajemen Proyek & Pendapatan:** *Service Agent* butuh *dashboard* khusus untuk memantau pesanan aktif, jadwal tenggat waktu, dan ringkasan pendapatan.
-4. **Sistem *Bidding* (Permintaan Khusus):** Klien butuh menyiarkan masalah khusus (contoh: Pipa bocor malam hari) agar para penyedia jasa bisa langsung memberikan penawaran harga (*bidding*).
-5. **Komunikasi yang Terkendali:** Kedua belah pihak butuh ruang *chat* terintegrasi di dalam aplikasi untuk bernegosiasi dan mengirim pembaruan proyek tanpa membagikan nomor pribadi.
+Berikut adalah lima kebutuhan utama dari target pengguna:
+1. **Pencarian Cerdas & Spesifik:** Pengguna memerlukan kemampuan untuk mencari jasa berdasarkan lokasi terdekat, rating, dan ketersediaan waktu.
+2. **Validasi Kredibilitas:** Pengguna ingin melihat portofolio visual, *badge* verifikasi, dan ulasan dari klien sebelumnya untuk membangun rasa percaya.
+3. **Manajemen Proyek & Pendapatan:** *Service Agent* memerlukan *dashboard* khusus untuk memantau pesanan aktif, jadwal tenggat waktu, dan ringkasan pendapatan.
+4. **Sistem *Bidding* (Permintaan Khusus):** Klien perlu menyiarkan masalah khusus (contoh: Pipa bocor malam hari) agar penyedia jasa dapat memberikan penawaran harga (*bidding*) secara langsung.
+5. **Komunikasi yang Terkendali:** Kedua belah pihak memerlukan ruang *chat* terintegrasi dalam aplikasi untuk bernegosiasi dan mengirim pembaruan proyek tanpa harus membagikan nomor pribadi.
 
 ## Pemetaan Kebutuhan ke Layar & Komponen
 | Kebutuhan Pengguna | Layar (*Screen*) Terkait | Komponen UI Utama |
@@ -29,19 +29,18 @@ Berikut adalah minimal 5 kebutuhan utama dari target pengguna:
 | **Sistem *Bidding*** | `explore.tsx` (Eksplor) | Daftar *Card* "Permintaan Jasa Terbaru", Label *Budget*, Tombol "Kirim Penawaran". |
 | **Komunikasi** | `feed.tsx` (Pesan/Chat) | Daftar Pesan Masuk, *Bubble Chat* Negosiasi, Indikator Notifikasi pada Header. |
 
-##  Alasan Keputusan Desain (Design Rationale)
-1. **Arsitektur Expo Router (Bottom Tabs):** Penggunaan *Route Groups* `(tabs)` dipilih agar baris navigasi bawah dirender sekali oleh sistem. Ini memastikan transisi perpindahan antar-layar (Beranda ↔ Profil) terjadi secara instan tanpa layar berkedip, memberikan pengalaman *native* yang mulus.
-2. **Pendekatan *Card-Based UI*:** Mengingat tingginya kepadatan informasi (harga, lokasi, deskripsi, ulasan), desain dibungkus ke dalam kartu-kartu (*cards*) dengan *shadow* lembut dan sudut membulat (*rounded-xl*). Ini mencegah *cognitive overload* dan menjaga antarmuka tetap bersih.
-3. **Warna Psikologis (Indigo & Teal):** Penggunaan warna utama *Indigo/Blue* (`#3525cd`) merepresentasikan kepercayaan, profesionalisme, dan teknologi. Warna sekunder hijau/teal (`#00687a` & `#005338`) digunakan pada elemen "Verifikasi" dan "Keberhasilan" untuk memberikan rasa aman.
-4. **Indikator Ketersediaan (*Availability Toggle*):** Menempatkan tombol *toggle* "Terima Pesanan/Istirahat" secara menonjol di *Dashboard* dan *Profil* sangat krusial bagi pekerja lepas untuk mengatur batas waktu kerja (*work-life balance*).
+## Alasan Keputusan Desain (Design Rationale)
+1. **Arsitektur Expo Router (Bottom Tabs):** Pemilihan *Route Groups* `(tabs)` dilakukan agar bar navigasi bawah hanya dirender sekali oleh sistem. Hal ini menjamin transisi antar-layar (Beranda ↔ Profil) berlangsung secara instan tanpa adanya kedipan layar, sehingga memberikan pengalaman *native* yang lebih lancar.
+2. **Pendekatan *Card-Based UI*:** Dengan mempertimbangkan tingginya kepadatan informasi (harga, lokasi, deskripsi, ulasan), desain disusun dalam bentuk kartu-kartu (*cards*) yang dilengkapi dengan *shadow* lembut dan sudut membulat (*rounded-xl*). Ini bertujuan untuk menghindari *cognitive overload* dan menjaga antarmuka tetap rapi.
+3. **Warna Psikologis (Indigo & Teal):** Penggunaan warna utama *Indigo/Biru* (`#3525cd`) melambangkan kepercayaan, profesionalisme, dan teknologi. Warna sekunder hijau/teal (`#00687a` & `#005338`) diterapkan pada elemen "Verifikasi" dan "Keberhasilan" untuk menciptakan rasa aman.
+4. **Indikator Ketersediaan (*Availability Toggle*):** Penempatan tombol *toggle* "Terima Pesanan/Istirahat" secara mencolok di *Dashboard* dan *Profil* sangat penting bagi pekerja lepas untuk mengatur keseimbangan antara pekerjaan dan kehidupan pribadi (*work-life balance*).
 
-## Rencana Pengembangan (Development Plan)
-Pengembangan aplikasi ini dibagi menjadi beberapa fase (*Milestones*):
-* **Fase 1: Slicing UI & Navigasi Dasar (Saat Ini)** 
-  Konversi desain antarmuka ke React Native dengan NativeWind (Tailwind CSS) dan implementasi *routing* dasar (Expo Router).
-* **Fase 2: Integrasi Autentikasi & State Management** 
-  Menambahkan sistem Login/Daftar (Google/Apple Auth) dan manajemen status global menggunakan Redux atau Zustand.
+Rencana Pengembangan Aplikasi ini terbagi menjadi beberapa fase (*Milestones*):
+* **Fase 1: Pemotongan UI & Navigasi Dasar (Saat Ini)** 
+  Mengonversi desain antarmuka ke dalam React Native menggunakan NativeWind (Tailwind CSS) serta menerapkan *routing* dasar (Expo Router).
+* **Fase 2: Integrasi Autentikasi & Manajemen Status** 
+  Menambahkan sistem Login/Daftar (Google/Apple Auth) dan pengelolaan status global dengan menggunakan Redux atau Zustand.
 * **Fase 3: Pengembangan Backend & REST API** 
-  Pembuatan skema *database* (Supabase/Firebase atau Node.js/PostgreSQL) untuk entitas *Users*, *Services*, *Orders*, dan *Reviews*.
-* **Fase 4: Transaksi & Real-Time Fitur** 
-  Integrasi *Payment Gateway* (seperti Midtrans/Xendit) untuk pembayaran yang aman (sistem *escrow/rekber*) dan implementasi WebSockets (Socket.io) untuk *live chat* antar pengguna.
+  Membuat skema *database* (Supabase/Firebase atau Node.js/PostgreSQL) untuk entitas *Users*, *Services*, *Orders*, dan *Reviews*.
+* **Fase 4: Transaksi & Fitur Real-Time** 
+  Mengintegrasikan *Payment Gateway* (seperti Midtrans/Xendit) untuk pembayaran yang aman (sistem *escrow/rekber*) dan menerapkan WebSockets (Socket.io) untuk *live chat* antar pengguna.
