@@ -24,7 +24,7 @@ export default function LoginScreen() {
   setIsLoading(true);
   setTimeout(() => {
     setIsLoading(false);
-    router.replace('/dashboard');
+    router.replace('/tabs/dashboard');
   }, 1200);
 };
 
@@ -200,7 +200,7 @@ export default function LoginScreen() {
 
         <TouchableOpacity className="w-full h-12 px-4 rounded-xl bg-white border border-[#e2e7ff] shadow-sm flex-row items-center justify-center mb-3 active:scale-98">
           <Image
-            source={require('../../assets/images/google.png')}
+            source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png' }}
             style={{ width: 20, height: 20 }}
             resizeMode="contain"
           />
@@ -208,7 +208,7 @@ export default function LoginScreen() {
             Lanjutkan dengan Google
           </Text>
         </TouchableOpacity>
-
+        
         <TouchableOpacity className="w-full h-12 px-4 rounded-xl bg-[#283044] shadow-sm flex-row items-center justify-center active:scale-98">
           <MaterialIcons name="apple" size={22} color="#ffffff" />
           <Text className="text-white font-semibold text-sm ml-3">
