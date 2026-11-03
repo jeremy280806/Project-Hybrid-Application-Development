@@ -221,7 +221,7 @@ export default function LoginScreen() {
             <Text className="text-sm text-[#131b2e]">
               Belum punya akun ServiConnect?{' '}
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => router.push('/register')}>
               <Text className="text-sm text-[#3525cd] font-semibold">
                 Daftar Sekarang
               </Text>
