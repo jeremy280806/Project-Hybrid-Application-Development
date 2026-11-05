@@ -1,37 +1,41 @@
 import { Tabs } from 'expo-router';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { View } from 'react-native';
+import { useRouter } from 'expo-router';
+
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false, 
-        tabBarActiveTintColor: '#3525cd',
-        tabBarInactiveTintColor: '#9090B0',
+        headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#faf8ff',
-          borderTopColor: '#dae2fd',
-          height: 65,
+          height: 70,
+          backgroundColor: '#ffffff',
+          borderTopWidth: 1,
+          borderTopColor: '#f2f3ff',
           paddingBottom: 10,
           paddingTop: 5,
         },
+        tabBarActiveTintColor: '#3525cd',
+        tabBarInactiveTintColor: '#777587',
         tabBarLabelStyle: {
           fontSize: 10,
-          fontWeight: 'bold',
-          marginTop: 2,
+          fontFamily: 'Manrope-Bold', 
+          fontWeight: '700',
         },
       }}
     >
       <Tabs.Screen
-        name="dashboard"
+        name="beranda"
         options={{
           title: 'Beranda',
           tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="eksplor"
         options={{
           title: 'Eksplor',
           tabBarIcon: ({ color }) => <MaterialIcons name="explore" size={24} color={color} />,
@@ -39,22 +43,19 @@ export default function TabLayout() {
       />
       
       <Tabs.Screen
-        name="create-post"
+        name="add" 
         options={{
           title: '',
-          tabBarIcon: () => (
-            <View className="w-12 h-12 rounded-full bg-[#3525cd] items-center justify-center -mt-6 shadow-lg">
-              <MaterialIcons name="add" size={28} color="#ffffff" />
-            </View>
-          ),
+          tabBarButton: (props) => <CustomTabBarButton {...props} />,
+          href: '/(tabs)/create-post' 
         }}
       />
-      
+
       <Tabs.Screen
-        name="feed"
+        name="pesan"
         options={{
           title: 'Pesan',
-          tabBarIcon: ({ color }) => <MaterialIcons name="chat-bubble-outline" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <MaterialIcons name="chat-bubble" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
@@ -62,6 +63,13 @@ export default function TabLayout() {
         options={{
           title: 'Profil',
           tabBarIcon: ({ color }) => <MaterialIcons name="account-circle" size={24} color={color} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="create-post"
+        options={{
+          href: null, 
         }}
       />
     </Tabs>
