@@ -1,41 +1,53 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-
+import { View, StyleSheet, Platform } from 'react-native';
+import { BlurView } from 'expo-blur';
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
-          height: 70,
-          backgroundColor: '#ffffff',
-          borderTopWidth: 1,
-          borderTopColor: '#f2f3ff',
-          paddingBottom: 10,
-          paddingTop: 5,
-        },
         tabBarActiveTintColor: '#3525cd',
-        tabBarInactiveTintColor: '#777587',
+        tabBarInactiveTintColor: '#9090B0',
+        
+        tabBarBackground: () => (
+          <BlurView 
+            intensity={80} 
+            tint="light" 
+            style={StyleSheet.absoluteFill} 
+          />
+        ),
+
+        tabBarStyle: {
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          
+          backgroundColor: Platform.OS === 'android' ? 'rgba(255, 255, 255, 0.85)' : 'transparent',
+          borderTopWidth: 0, 
+          elevation: 0, 
+          height: 75,
+          paddingBottom: 12,
+          paddingTop: 8,
+        },
         tabBarLabelStyle: {
-          fontSize: 10,
-          fontFamily: 'Manrope-Bold', 
-          fontWeight: '700',
+          fontSize: 11,
+          fontWeight: 'bold',
+          marginTop: 4,
         },
       }}
     >
       <Tabs.Screen
-        name="beranda"
+        name="dashboard"
         options={{
           title: 'Beranda',
           tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="eksplor"
+        name="explore"
         options={{
           title: 'Eksplor',
           tabBarIcon: ({ color }) => <MaterialIcons name="explore" size={24} color={color} />,
@@ -43,19 +55,22 @@ export default function TabLayout() {
       />
       
       <Tabs.Screen
-        name="add" 
+        name="create-post"
         options={{
           title: '',
-          tabBarButton: (props) => <CustomTabBarButton {...props} />,
-          href: '/(tabs)/create-post' 
+          tabBarIcon: () => (
+            <View className="w-14 h-14 rounded-full bg-[#3525cd] items-center justify-center -mt-7 shadow-md border-[4px] border-white/50">
+              <MaterialIcons name="add" size={28} color="#ffffff" />
+            </View>
+          ),
         }}
       />
-
+      
       <Tabs.Screen
-        name="pesan"
+        name="feed"
         options={{
           title: 'Pesan',
-          tabBarIcon: ({ color }) => <MaterialIcons name="chat-bubble" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <MaterialIcons name="chat-bubble-outline" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
@@ -63,13 +78,6 @@ export default function TabLayout() {
         options={{
           title: 'Profil',
           tabBarIcon: ({ color }) => <MaterialIcons name="account-circle" size={24} color={color} />,
-        }}
-      />
-
-      <Tabs.Screen
-        name="create-post"
-        options={{
-          href: null, 
         }}
       />
     </Tabs>

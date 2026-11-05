@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const AVATAR_URI = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=256&auto=format&fit=crop';
+const AVATAR_URI = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFPHg2dPEoST1H7o5t_um0rM7dPKycfPprxxw-uiNxGi2DGiMsFvrlbbfscpwbValeIm0Tjd0a8_NEi-Id5i0WlJ5sq3izUel8OVeo-Q5E1hgSwqQl_AhyfzJkpPIrM3z0iNQsEctynkrG4164Z5prsspWlaQa9p4NI5oWQcaURkV9lTF59gT-ZtcYgIQD_W-PskDBJkZzMA_0WMbslCAdhLGpbC-Kp0LPKEG5XOrnqi8VcIDrMsn_';
 const PORTFOLIO_1 = 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=256&auto=format&fit=crop';
 const PORTFOLIO_2 = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=256&auto=format&fit=crop';
 
@@ -51,7 +51,6 @@ export default function CreatePostScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-[#faf8ff]" edges={['top', 'left', 'right']}>
-      {/* HEADER */}
       <View className="h-16 px-4 flex-row items-center justify-between bg-[#faf8ff] z-50 border-b border-[#e2e7ff]">
         <View className="flex-row items-center gap-x-2">
           <TouchableOpacity
@@ -356,3 +355,67 @@ export default function CreatePostScreen() {
                   </TouchableOpacity>
                 </View>
               </View>
+
+              <View className="pt-4">
+                <Text className="text-[11px] font-bold text-[#777587] mb-2">Contoh Portofolio Terlampir:</Text>
+                <View className="flex-row gap-x-2">
+                  <View className="relative w-[30%] aspect-square rounded-xl overflow-hidden bg-[#e2e7ff] shadow-sm">
+                    <Image source={{ uri: PORTFOLIO_1 }} style={{ width: '100%', height: '100%' }} />
+                    <TouchableOpacity className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/60 items-center justify-center">
+                      <MaterialIcons name="close" size={14} color="#ffffff" />
+                    </TouchableOpacity>
+                  </View>
+                  <View className="relative w-[30%] aspect-square rounded-xl overflow-hidden bg-[#e2e7ff] shadow-sm">
+                    <Image source={{ uri: PORTFOLIO_2 }} style={{ width: '100%', height: '100%' }} />
+                    <TouchableOpacity className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/60 items-center justify-center">
+                      <MaterialIcons name="close" size={14} color="#ffffff" />
+                    </TouchableOpacity>
+                  </View>
+                  <TouchableOpacity className="w-[30%] aspect-square rounded-xl bg-[#eaedff] flex-col items-center justify-center active:bg-[#e2dfff]">
+                    <MaterialIcons name="add" size={24} color="#3525cd" />
+                    <Text className="text-[10px] font-bold text-[#3525cd] mt-0.5">Tambah</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+
+      <View className="absolute bottom-0 w-full z-40 bg-white/95 px-4 py-4 shadow-lg border-t border-[#f2f3ff]">
+        <View className="flex-row items-center gap-x-3">
+          <TouchableOpacity
+            className="w-1/3 py-3.5 rounded-xl bg-[#eaedff] items-center justify-center active:scale-95"
+            onPress={() => router.back()}
+          >
+            <Text className="text-sm font-extrabold text-[#131b2e]">Batal</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            className={`flex-1 py-3.5 rounded-xl flex-row items-center justify-center gap-x-2 shadow-sm active:scale-98 ${
+              isSuccess ? 'bg-[#006e4b]' : 'bg-[#3525cd]'
+            }`}
+            onPress={handlePublish}
+            disabled={isPublishing || isSuccess}
+          >
+            {isPublishing ? (
+              <>
+                <MaterialIcons name="autorenew" size={20} color="#ffffff" />
+                <Text className="text-sm font-extrabold text-white">Memproses...</Text>
+              </>
+            ) : isSuccess ? (
+              <>
+                <MaterialIcons name="check-circle" size={20} color="#ffffff" />
+                <Text className="text-sm font-extrabold text-white">Berhasil Terbit!</Text>
+              </>
+            ) : (
+              <>
+                <MaterialIcons name="rocket-launch" size={20} color="#6ffbbe" />
+                <Text className="text-sm font-extrabold text-white">Publikasikan Postingan</Text>
+              </>
+            )}
+          </TouchableOpacity>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}
