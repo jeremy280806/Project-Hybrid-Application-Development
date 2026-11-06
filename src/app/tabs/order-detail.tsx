@@ -18,7 +18,7 @@ export default function OrderDetailScreen() {
             <MaterialIcons name="arrow-back" size={24} color="#131b2e" />
           </TouchableOpacity>
           <View className="flex-col">
-            <Text className="font-extrabold text-base text-[#131b2e]">Order Details</Text>
+            <Text className="font-extrabold text-lg text-[#131b2e]">Order Details</Text>
             <Text className="text-[10px] text-[#464555] uppercase tracking-wider font-bold">
               ServiConnect Order
             </Text>
@@ -80,7 +80,7 @@ export default function OrderDetailScreen() {
               <View className="flex-row items-center gap-x-3 flex-1">
                 <View className="relative">
                   <Image
-                    source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBA9eCjyT5zZN58Jq3bWnxYeqzt50C4CQM_YDDP4Rqr2Mq-tpaa8nUtlGjDXVh7C5eTpTLQUNBGvm3UiLHQao4LgnF5TopXPWeB0g3SXJPD4B71abfDjzIVSB4vm51xjw4GPgYRtC7ZvfJF9OFviuiuCeIGdkL4yEZIchxcjc6fMjfFMlad0BXb6mxCd1FYe_DGjiaKcmTbiABLWBVp1H_XyT7koQHOzTO_ptegVRX6_BNS0Ef7YzXq  ' }}
+                    source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBA9eCjyT5zZN58Jq3bWnxYeqzt50C4CQM_YDDP4Rqr2Mq-tpaa8nUtlGjDXVh7C5eTpTLQUNBGvm3UiLHQao4LgnF5TopXPWeB0g3SXJPD4B71abfDjzIVSB4vm51xjw4GPgYRtC7ZvfJF9OFviuiuCeIGdkL4yEZIchxcjc6fMjfFMlad0BXb6mxCd1FYe_DGjiaKcmTbiABLWBVp1H_XyT7koQHOzTO_ptegVRX6_BNS0Ef7YzXq' }}
                     style={{ width: 48, height: 48, borderRadius: 24 }}
                   />
                   <View className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#005338] items-center justify-center border-2 border-white">

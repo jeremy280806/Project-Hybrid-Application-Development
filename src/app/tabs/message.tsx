@@ -16,7 +16,7 @@
       message: '"Halo Mas Reza, alamat sudah saya kirimkan sesuai jadwal ya. Apakah alat sudah siap?"',
       isUrgent: true,
       unreadCount: 2,
-      avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBCPtld0hTVhdkLc5uJLWMlfipx7wxYjf4cTXeSPj6YjtA2xU03YByEtrNwjmiGJihn9Oi8-8vOrA47obAZ8bfGtzFI-3XSnmkDaUWnxZHiVhZQi70Mnwmxg_3X34wP_H5pxnKU7Mzx1-wamWZ8TB4ccing7t76RJKZDR8nR0LBJG6KQ42j04YkbuhO-SkhREceXSitveAjYjWmGg00HtbpC3CaKPuRwjEgDk7zUg8',
+      avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBA9eCjyT5zZN58Jq3bWnxYeqzt50C4CQM_YDDP4Rqr2Mq-tpaa8nUtlGjDXVh7C5eTpTLQUNBGvm3UiLHQao4LgnF5TopXPWeB0g3SXJPD4B71abfDjzIVSB4vm51xjw4GPgYRtC7ZvfJF9OFviuiuCeIGdkL4yEZIchxcjc6fMjfFMlad0BXb6mxCd1FYe_DGjiaKcmTbiABLWBVp1H_XyT7koQHOzTO_ptegVRX6_BNS0Ef7YzXq',
     },
     {
       id: '2',
@@ -45,7 +45,7 @@
             <View className="w-8 h-8 rounded bg-[#3525cd] items-center justify-center">
               <MaterialIcons name="chat-bubble" size={18} color="#ffffff" />
             </View>
-            <Text className="font-extrabold text-xl text-[#131b2e]">Pesan</Text>
+            <Text className="font-extrabold text-lg text-[#131b2e]">Pesan</Text>
           </View>
           <View className="flex-row items-center gap-x-3">
             <TouchableOpacity className="relative">
