@@ -20,12 +20,6 @@ Berikut adalah lima kebutuhan utama dari target pengguna:
 4. **Sistem *Bidding* (Permintaan Khusus):** Klien perlu menyiarkan masalah khusus (contoh: Pipa bocor malam hari) agar penyedia jasa dapat memberikan penawaran harga (*bidding*) secara langsung.
 5. **Komunikasi yang Terkendali:** Kedua belah pihak memerlukan ruang *chat* terintegrasi dalam aplikasi untuk bernegosiasi dan mengirim pembaruan proyek tanpa harus membagikan nomor pribadi.
 
-
-<br>**2. Escrow Status Card**: Kartu persentase "*Rekening Bersama*" yang memastikan dana klien aman (terkunci) dan pekerja dibayar sesuai progres.<br>
-
-<br>**3. Deliverables Manager**: Integrasi tombol pengelolaan aset (*Upload File*, tautan eksternal seperti Figma) langsung di dalam tiket pesanan. |
-
-<br>**3. Deliverables Manager**: Integrasi tombol pengelolaan aset (*Upload File*, tautan eksternal seperti Figma) langsung di dalam tiket pesanan. |
 ## Alasan Keputusan Desain (Design Rationale)
 1. **Arsitektur Expo Router (Bottom Tabs):** Pemilihan *Route Groups* `(tabs)` dilakukan agar bar navigasi bawah hanya dirender sekali oleh sistem. Hal ini menjamin transisi antar-layar (Beranda ↔ Profil) berlangsung secara instan tanpa adanya kedipan layar, sehingga memberikan pengalaman *native* yang lebih lancar.
 2. **Pendekatan *Card-Based UI*:** Dengan mempertimbangkan tingginya kepadatan informasi (harga, lokasi, deskripsi, ulasan), desain disusun dalam bentuk kartu-kartu (*cards*) yang dilengkapi dengan *shadow* lembut dan sudut membulat (*rounded-xl*). Ini bertujuan untuk menghindari *cognitive overload* dan menjaga antarmuka tetap rapi.
