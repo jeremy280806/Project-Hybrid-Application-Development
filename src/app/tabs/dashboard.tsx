@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 type MaterialIconName = React.ComponentProps<typeof MaterialIcons>['name'];
 
@@ -191,6 +192,7 @@ function StatsStrip() {
 }
 
 function UrgentOrderSpotlight() {
+  const router = useRouter();
   return (
     <View className="flex-col gap-y-2.5">
       <View className="flex-row items-center justify-between">
@@ -256,7 +258,10 @@ function UrgentOrderSpotlight() {
         </View>
 
         <View className="flex-row gap-x-2 pt-1">
-          <TouchableOpacity className="flex-1 py-2 rounded-lg bg-surface-container items-center justify-center">
+          <TouchableOpacity 
+            className="flex-1 py-2 rounded-lg bg-surface-container items-center justify-center"
+            onPress={() => router.push('/tabs/order-detail')}
+          >
             <Text className="text-sm font-semibold text-on-surface">
               Detail Pesanan
             </Text>

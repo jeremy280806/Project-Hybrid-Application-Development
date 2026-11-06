@@ -82,6 +82,14 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <MaterialIcons name="account-circle" size={24} color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="order-detail"
+        options={{
+          title: 'Detail Pesanan',
+          href: null,
+          tabBarStyle: { display: 'none' }, 
+        }}
+      />
     </Tabs>
   );
 }
