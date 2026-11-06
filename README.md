@@ -27,7 +27,7 @@ Berikut adalah lima kebutuhan utama dari target pengguna:
 | **Validasi Kredibilitas** | `profile.tsx` (Profil) | *Avatar* Profil, *Badge* "Mitra Pro Terverifikasi", *Tabs* Portofolio & Ulasan, Status *Online/Off*. |
 | **Manajemen Proyek** | `dashboard.tsx` (Beranda) | *Balance Card* (Saldo), *Stats Strip* (Total Proyek), *Urgent Order Spotlight* (Pesanan Mendesak), *Toggle* Terima Pesanan. |
 | **Sistem *Bidding*** | `explore.tsx` (Eksplor) | Daftar *Card* "Permintaan Jasa Terbaru", Label *Budget*, Tombol "Kirim Penawaran". |
-| **Komunikasi** | `feed.tsx` (Pesan/Chat) | Daftar Pesan Masuk, *Bubble Chat* Negosiasi, Indikator Notifikasi pada Header. |
+| **Komunikasi** | `message.tsx` (Pesan/Chat) | Daftar Pesan Masuk, *Bubble Chat* Negosiasi, Indikator Notifikasi pada Header. |
 
 ## Alasan Keputusan Desain (Design Rationale)
 1. **Arsitektur Expo Router (Bottom Tabs):** Pemilihan *Route Groups* `(tabs)` dilakukan agar bar navigasi bawah hanya dirender sekali oleh sistem. Hal ini menjamin transisi antar-layar (Beranda ↔ Profil) berlangsung secara instan tanpa adanya kedipan layar, sehingga memberikan pengalaman *native* yang lebih lancar.
