@@ -213,7 +213,7 @@ function UrgentOrderSpotlight() {
           <View className="flex-row items-center gap-x-2.5 flex-1 min-w-0">
             <Image
               source={{
-                uri: 'https://lh3.googleusercontent.com/aida-[REDACTED: credential]_YDDP4Rqr2Mq-[REDACTED: credential]_DGjiaKcmTbiABLWBVp1H_XyT7koQHOzTO_ptegVRX6_BNS0Ef7YzXq',
+                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBA9eCjyT5zZN58Jq3bWnxYeqzt50C4CQM_YDDP4Rqr2Mq-tpaa8nUtlGjDXVh7C5eTpTLQUNBGvm3UiLHQao4LgnF5TopXPWeB0g3SXJPD4B71abfDjzIVSB4vm51xjw4GPgYRtC7ZvfJF9OFviuiuCeIGdkL4yEZIchxcjc6fMjfFMlad0BXb6mxCd1FYe_DGjiaKcmTbiABLWBVp1H_XyT7koQHOzTO_ptegVRX6_BNS0Ef7YzXq',
               }}
               className="w-10 h-10 rounded-full shrink-0"
               resizeMode="cover"

@@ -1,7 +1,8 @@
-import { Tabs } from 'expo-router';
-import { MaterialIcons } from '@expo/vector-icons';
-import { View, StyleSheet, Platform } from 'react-native';
 import { BlurView } from 'expo-blur';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Tabs } from 'expo-router';
+import React from 'react';
+import { Platform, StyleSheet, View } from 'react-native';
 
 export default function TabLayout() {
   return (
@@ -10,12 +11,12 @@ export default function TabLayout() {
         headerShown: false,
         tabBarActiveTintColor: '#3525cd',
         tabBarInactiveTintColor: '#9090B0',
-        
+
         tabBarBackground: () => (
-          <BlurView 
-            intensity={80} 
-            tint="light" 
-            style={StyleSheet.absoluteFill} 
+          <BlurView
+            intensity={80}
+            tint="light"
+            style={StyleSheet.absoluteFill}
           />
         ),
 
@@ -24,10 +25,10 @@ export default function TabLayout() {
           bottom: 0,
           left: 0,
           right: 0,
-          
+
           backgroundColor: Platform.OS === 'android' ? 'rgba(255, 255, 255, 0.85)' : 'transparent',
-          borderTopWidth: 0, 
-          elevation: 0, 
+          borderTopWidth: 0,
+          elevation: 0,
           height: 75,
           paddingBottom: 12,
           paddingTop: 8,
@@ -53,7 +54,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <MaterialIcons name="explore" size={24} color={color} />,
         }}
       />
-      
+
       <Tabs.Screen
         name="create-post"
         options={{
@@ -65,14 +66,15 @@ export default function TabLayout() {
           ),
         }}
       />
-      
+
       <Tabs.Screen
-        name="feed"
+        name="message" 
         options={{
           title: 'Pesan',
           tabBarIcon: ({ color }) => <MaterialIcons name="chat-bubble-outline" size={24} color={color} />,
         }}
       />
+
       <Tabs.Screen
         name="profile"
         options={{
