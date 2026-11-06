@@ -251,7 +251,10 @@ export default function OrderDetailScreen() {
       </ScrollView>
 
       <View className="absolute bottom-0 w-full bg-white px-4 py-3 shadow-lg border-t border-[#e2e7ff] flex-row items-center gap-x-3">
-        <TouchableOpacity className="flex-1 py-3.5 rounded-xl bg-[#e2e7ff] flex-row items-center justify-center gap-x-2">
+        <TouchableOpacity 
+          className="flex-1 py-3.5 rounded-xl bg-[#e2e7ff] flex-row items-center justify-center gap-x-2"
+          onPress={() => router.push('/tabs/message')}
+        >
           <MaterialIcons name="chat" size={20} color="#3525cd" />
           <Text className="text-sm font-bold text-[#3525cd]">Chat Klien</Text>
         </TouchableOpacity>

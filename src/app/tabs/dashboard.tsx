@@ -266,7 +266,10 @@ function UrgentOrderSpotlight() {
               Detail Pesanan
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity className="flex-1 flex-row items-center justify-center gap-x-1.5 px-4 py-2 rounded-lg bg-primary shadow-sm">
+          <TouchableOpacity 
+            className="flex-1 flex-row items-center justify-center gap-x-1.5 px-4 py-2 rounded-lg bg-primary shadow-sm"
+            onPress={() => router.push('/tabs/message')}
+          >
             <MaterialIcons name="chat" size={18} color="#ffffff" />
             <Text className="text-sm font-bold text-white">
               Chat Klien
